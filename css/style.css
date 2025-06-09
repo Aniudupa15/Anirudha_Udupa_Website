@@ -310,6 +310,8 @@ a:focus {
 .header {
     position: relative;
     background: #ffffff;
+    align-items: center;
+    text-align: center;
 }
 
 .header .content-inner {
