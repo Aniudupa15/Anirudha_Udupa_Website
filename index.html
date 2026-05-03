@@ -26,7 +26,7 @@ make <!doctype html>
     --mono: "Geist Mono", ui-monospace, monospace;
     --motion: 1;
   }
-  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
   body {
     font-family: var(--sans);
@@ -144,6 +144,8 @@ make <!doctype html>
   .eyebrow::before {
     content: ""; display: inline-block; width: 18px; height: 1px; background: var(--ink-3);
   }
+  .eyebrow.centered::before { display: none; }
+  .eyebrow.centered { justify-content: center; }
   .eyebrow .num { color: var(--accent); }
 
   /* ── Hero ────────────────────────────────────────────────── */
@@ -216,27 +218,6 @@ make <!doctype html>
   .hero-side .row .k { color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.12em; font-size: 10.5px; }
   .hero-side .row .v { color: var(--ink); }
   .hero-side .row .v .acc { color: var(--accent); }
-
-  .scroll-cue {
-    margin-top: 100px;
-    display: inline-flex; align-items: center; gap: 12px;
-    font-family: var(--mono); font-size: 11.5px;
-    text-transform: uppercase; letter-spacing: 0.18em;
-    color: var(--ink-3);
-  }
-  .scroll-cue .arrow {
-    display: inline-block; width: 20px; height: 1px; background: var(--ink-3); position: relative;
-    animation: arrowPulse calc(2s / var(--motion, 1)) ease-in-out infinite;
-  }
-  .scroll-cue .arrow::after {
-    content: ""; position: absolute; right: 0; top: -3px;
-    width: 7px; height: 7px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3);
-    transform: rotate(-45deg);
-  }
-  @keyframes arrowPulse {
-    0%, 100% { transform: translateX(0); opacity: 0.6; }
-    50% { transform: translateX(6px); opacity: 1; }
-  }
 
   /* ── About ───────────────────────────────────────────────── */
   .about-wrap {
@@ -385,7 +366,7 @@ make <!doctype html>
   }
   .stack-line .item {
     flex: 1 0 auto;
-    padding: 14px 22px 14px 0;
+    padding: 18px 26px;
     border-right: 1px dashed var(--rule);
     font-family: var(--serif);
     font-size: 19px;
@@ -395,7 +376,7 @@ make <!doctype html>
   .stack-line .item:last-child { border-right: none; }
   .stack-line .item { position: relative; cursor: none; }
   .stack-line .item::before {
-    content: ""; position: absolute; left: 0; right: 22px; bottom: 0; height: 1px;
+    content: ""; position: absolute; left: 26px; right: 26px; bottom: 0; height: 1px;
     background: var(--accent);
     transform: scaleX(0); transform-origin: left;
     transition: transform .45s cubic-bezier(.2,.8,.2,1);
@@ -520,16 +501,16 @@ make <!doctype html>
   /* ── Selected work feature ───────────────────────────────── */
   .feature {
     margin-top: 90px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
   }
-  .feature .ft-text { max-width: 38ch; }
+  .feature .ft-text { max-width: 60ch; }
   .feature h3 {
     font-family: var(--serif); font-weight: 400;
-    font-size: 48px; line-height: 1.05; letter-spacing: -0.02em;
-    margin: 14px 0 18px;
+    font-size: clamp(40px, 6vw, 56px); line-height: 1.1; letter-spacing: -0.02em;
+    margin: 20px 0 24px;
   }
   .feature h3 .it { font-style: italic; color: var(--accent); }
   .feature p {
@@ -1051,9 +1032,6 @@ make <!doctype html>
         <div class="row"><span class="k">Status</span><span class="v"><span class="acc">●</span> available for freelance</span></div>
       </div>
     </div>
-    <div class="scroll-cue reveal" style="--d: 500ms">
-      <span>Scroll</span><span class="arrow"></span><span>read on</span>
-    </div>
   </div>
 </section>
 
@@ -1157,25 +1135,25 @@ make <!doctype html>
     </h2>
 
     <div class="projects-list reveal" style="--d: 160ms">
-      <a href="#feature" class="project-row" data-preview="trackin" data-cursor="preview">
+      <a href="#feature" class="project-row" data-project="trackin" data-preview="trackin" data-cursor="view project">
         <span class="idx">N°01</span>
         <span class="title"><span class="it">Track</span>In</span>
         <span class="meta"><span class="label">Stack</span>Flutter · FastAPI · OpenCV</span>
         <span class="arrow">→</span>
       </a>
-      <a href="#" class="project-row" data-preview="kudla" data-cursor="case study">
+      <a href="#feature" class="project-row" data-project="kudla" data-preview="kudla" data-cursor="view project">
         <span class="idx">N°02</span>
         <span class="title">Clean <span class="it">Kudla</span></span>
         <span class="meta"><span class="label">Stack</span>Flutter · Firebase · Maps API</span>
         <span class="arrow">→</span>
       </a>
-      <a href="#" class="project-row" data-preview="judica" data-cursor="case study">
+      <a href="#feature" class="project-row" data-project="judica" data-preview="judica" data-cursor="view project">
         <span class="idx">N°03</span>
         <span class="title"><span class="it">Judica</span></span>
         <span class="meta"><span class="label">Stack</span>Flutter · FastAPI · ML</span>
         <span class="arrow">→</span>
       </a>
-      <a href="#" class="project-row" data-preview="dash" data-cursor="case study">
+      <a href="#feature" class="project-row" data-project="dash" data-preview="dash" data-cursor="view project">
         <span class="idx">N°04</span>
         <span class="title">SmartWaste <span class="it">Dashboard</span></span>
         <span class="meta"><span class="label">Stack</span>React · Flutter Web · Charts</span>
@@ -1184,23 +1162,12 @@ make <!doctype html>
     </div>
 
     <!-- Feature: TrackIn live demo -->
-    <div class="feature reveal" id="feature" style="--d: 200ms">
-      <div class="ft-text">
-        <div class="eyebrow"><span class="num">Featured</span></div>
-        <h3>An <span class="it">attendance system</span> that takes one photo.</h3>
-        <p>TrackIn detects faces in a single group photo, matches them against the enrolled roster, and writes attendance to Firestore — replacing roll-call with a snapshot.</p>
-        <p style="font-family: var(--sans); font-size: 14px; color: var(--ink-3); margin-top: 18px;">Try the live demo below — click <em>run attendance</em> to see the model scan, detect, and log each student.</p>
-        <button class="ft-link" id="ft-run-link">Run live demo →</button>
-      </div>
-      <div class="feature-stage" id="feature-stage">
-        <div class="photo" id="feature-photo">
-          <div class="scanline"></div>
-        </div>
-        <button class="run-btn" id="ft-run-btn">▸ Run attendance</button>
-        <div class="stage-stats">
-          <div><span class="k">Detected</span><span class="v" id="ft-detected">0<span class="acc">/12</span></span></div>
-          <div><span class="k">Confidence</span><span class="v" id="ft-conf">—</span></div>
-          <div><span class="k">Runtime</span><span class="v" id="ft-run">—</span></div>
+    <div class="feature reveal" id="feature" style="--d: 200ms; scroll-margin-top: 140px; width: 100%;">
+      <div class="ft-text" style="margin: 0 auto;">
+        <div class="eyebrow centered" id="ft-eyebrow-container"><span class="num" id="ft-eyebrow">Featured</span></div>
+        <h3 id="ft-title">An <span class="it">attendance system</span> that takes one photo.</h3>
+        <div id="ft-description" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-2); margin-bottom: 30px;">
+          <p>TrackIn detects faces in a single group photo, matches them against the enrolled roster, and writes attendance to Firestore — replacing roll-call with a snapshot.</p>
         </div>
       </div>
     </div>
@@ -1510,7 +1477,55 @@ make <!doctype html>
       row.addEventListener('mouseleave', () => {
         previewBox.classList.remove('show');
       });
+
+      // Project Detail Switcher
+      row.addEventListener('click', (e) => {
+        const projectKey = row.getAttribute('data-project');
+        updateProjectDetail(projectKey);
+      });
     });
+  }
+
+  const projectData = {
+    trackin: {
+      eyebrow: "N°01 · Featured",
+      title: "An <span class=\"it\">attendance system</span> that takes one photo.",
+      description: "<p>TrackIn detects faces in a single group photo, matches them against the enrolled roster, and writes attendance to Firestore — replacing roll-call with a snapshot.</p>"
+    },
+    kudla: {
+      eyebrow: "N°02 · Case Study",
+      title: "Clean <span class=\"it\">Kudla</span>: GPS-based sanitation.",
+      description: "<p>A community-driven platform for reporting and tracking sanitation issues in Mangalore. Built with Flutter and Firebase, it features real-time GPS tagging and a verified resolution workflow.</p>"
+    },
+    judica: {
+      eyebrow: "N°03 · AI/Legal",
+      title: "<span class=\"it\">Judica</span>: Intelligent legal intake.",
+      description: "<p>Streamlining the legal intake process using ML-driven routing. Judica analyzes incoming queries and matches them with relevant legal categories and practitioners automatically.</p>"
+    },
+    dash: {
+      eyebrow: "N°04 · Web App",
+      title: "SmartWaste <span class=\"it\">Dashboard</span>.",
+      description: "<p>A comprehensive data visualization suite for waste management logistics. Monitor truck routes, fill levels, and regional efficiency metrics in a high-performance React dashboard.</p>"
+    }
+  };
+
+  function updateProjectDetail(key) {
+    const data = projectData[key];
+    if (!data) return;
+
+    const eye = document.getElementById('ft-eyebrow');
+    const title = document.getElementById('ft-title');
+    const desc = document.getElementById('ft-description');
+
+    // Simple transition effect
+    const feature = document.getElementById('feature');
+    animate(feature, { opacity: [1, 0, 1], scale: [1, 0.98, 1] }, { duration: 0.4 });
+
+    setTimeout(() => {
+      eye.innerText = data.eyebrow;
+      title.innerHTML = data.title;
+      desc.innerHTML = data.description;
+    }, 200);
   }
 
   // 7. Live IST Clock
