@@ -1,0 +1,51 @@
+/* ---------- Mobile view toggle ---------- */
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.mode-toggle { display: inline-flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border: 0; border-radius: 999px; background: rgba(20, 20, 20, 0.06); font-size: 13.5px; font-weight: 600; transition: background 0.3s; }
+.mode-toggle:hover { background: rgba(20, 20, 20, 0.1); }
+.mt-switch { position: relative; width: 44px; height: 26px; border-radius: 999px; background: #cfc9bf; transition: background 0.35s var(--ease); }
+.mt-switch i { position: absolute; left: 3px; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); transition: transform 0.45s var(--ease); }
+.mode-toggle.on .mt-switch { background: var(--orange); }
+.mode-toggle.on .mt-switch i { transform: translateX(18px); }
+html.app-open .nav { z-index: 120; translate: -50% 0 !important; }
+
+/* On a real phone the site is already the mobile view, so no toggle. Inside the preview, no toggle or custom cursor either. */
+@media (max-width: 820px) and (pointer: fine) { .mode-toggle { display: none; } }
+@media (max-width: 480px) { .mt-label { display: none; } .mode-toggle { padding: 6px; } }
+html.embed .mode-toggle, html.embed .cursor { display: none !important; }
+
+/* ---------- Phone preview of the site ---------- */
+.device { position: fixed; inset: 0; z-index: 110; visibility: hidden; opacity: 0; }
+.dv-bg { position: absolute; inset: 0; background:
+    radial-gradient(40% 50% at 75% 30%, rgba(255, 201, 60, 0.45), transparent 70%),
+    radial-gradient(40% 50% at 70% 80%, rgba(108, 92, 231, 0.25), transparent 70%),
+    radial-gradient(35% 45% at 15% 70%, rgba(255, 111, 165, 0.2), transparent 70%),
+    var(--bg); }
+.dv-stage { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(30px, 6vw, 110px); padding: 90px max(24px, 7vw) 24px; }
+.dv-side { max-width: 460px; justify-self: end; }
+.dv-kicker { display: inline-flex; margin: 0 0 18px; padding: 7px 14px; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 600; }
+.dv-side h2 { margin: 0 0 18px; font-weight: 600; font-size: clamp(40px, 4.6vw, 72px); line-height: 0.98; letter-spacing: -0.05em; }
+.dv-side h2 em { color: var(--orange); }
+.dv-side p { margin: 0 0 26px; font-size: 18px; color: var(--ink-2); }
+.dv-back { padding: 14px 22px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; font-size: 15px; transition: background 0.3s; }
+.dv-back:hover { background: var(--orange); }
+.dv-phone { position: relative; will-change: transform; filter: drop-shadow(0 60px 60px rgba(20, 20, 20, 0.35)); }
+.dv-frame { position: absolute; left: 0; top: 0; width: 418px; height: 872px; padding: 14px; border-radius: 64px; background: linear-gradient(145deg, #2d2d32, #0c0c0f); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08); transform-origin: 0 0; }
+.dv-frame::before, .dv-frame::after { content: ""; position: absolute; right: -3px; width: 4px; border-radius: 0 3px 3px 0; background: #1d1d21; }
+.dv-frame::before { top: 180px; height: 80px; }
+.dv-frame::after { top: 280px; height: 46px; }
+.dv-screen { position: relative; width: 390px; height: 844px; border-radius: 50px; overflow: hidden; background: var(--bg); }
+.dv-status { position: absolute; z-index: 3; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 14px 30px 0; font-size: 14px; font-weight: 700; color: var(--ink); pointer-events: none; }
+.dv-island { width: 110px; height: 32px; border-radius: 20px; background: #0c0c0f; }
+.dv-icons { font-size: 9px; letter-spacing: 1px; }
+.dv-iframe { position: absolute; inset: 0; width: 390px; height: 844px; border: 0; background: var(--bg); }
+.dv-homebar { position: absolute; z-index: 3; left: 50%; bottom: 8px; width: 130px; height: 5px; translate: -50% 0; border-radius: 3px; background: rgba(20, 20, 20, 0.4); pointer-events: none; }
+@media (max-width: 1000px) {
+  .dv-stage { grid-template-columns: 1fr; justify-items: center; }
+  .dv-side { display: none; }
+}
+
+/* inside the preview the page starts below the phone's status bar */
+html.embed { scrollbar-width: none; }
+html.embed::-webkit-scrollbar { display: none; }
+html.embed .nav { top: 50px; }
+html.embed .hero { padding-top: 160px; }

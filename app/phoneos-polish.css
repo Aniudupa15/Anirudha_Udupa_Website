@@ -1,0 +1,126 @@
+/* =========================================================
+   Phone OS polish: platform fonts, system colours, clean spacing
+   ========================================================= */
+.os-ios { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans), system-ui, sans-serif; letter-spacing: -0.01em; }
+.os-android { font-family: Roboto, "Google Sans", var(--font-sans), system-ui, sans-serif; }
+
+/* home grid: fixed icon columns, even gutters, crisp labels */
+.os-home { padding-left: 22px; padding-right: 22px; }
+.os-grid { grid-template-columns: repeat(4, 64px); justify-content: space-between; gap: 22px 0; margin-top: 24px; }
+.os-tile { width: 60px; height: 60px; border-radius: 15px; box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.45); }
+.os-icon small { font-size: 11px; font-weight: 500; letter-spacing: 0; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); }
+.os-real .os-tile { width: 60px; height: 60px; }
+.os-real .os-grid { grid-template-columns: repeat(4, 64px); gap: 22px 0; }
+.os-widget { padding: 12px 14px; border-radius: 22px; background: rgba(255, 255, 255, 0.22); }
+.os-widget img { width: 54px; height: 54px; border-radius: 14px; }
+.os-dots { position: absolute; left: 0; right: 0; bottom: 124px; display: flex; justify-content: center; gap: 7px; }
+.os-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.45); }
+.os-dots i.on { background: #fff; }
+.os-dock { left: 14px; right: 14px; padding: 14px 18px; border-radius: 32px; justify-content: space-between; }
+
+/* iOS folder icon */
+.os-folder { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 42px; height: 42px; }
+.os-folder i { display: grid; place-items: center; border-radius: 5px; font-style: normal; font-size: 10px; color: #fff; }
+.os-android .os-folder i { border-radius: 50%; }
+
+/* ---------- App window: system backgrounds ---------- */
+.os-ios .os-app { background: #f2f2f7; }
+.os-android .os-app { background: #fef7ff; }
+.os-dark.os-ios .os-app { background: #000; }
+.os-dark.os-android .os-app { background: #141218; }
+
+/* iOS navigation bar */
+.os-nav-ios { position: absolute; z-index: 4; left: 0; right: 0; top: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 54px 12px 8px; background: rgba(242, 242, 247, 0.82); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 0.5px solid rgba(0, 0, 0, 0.12); font-size: 17px; }
+.os-nav-ios button { justify-self: start; padding: 4px; border: 0; background: none; color: #007aff; font: inherit; font-size: 17px; cursor: pointer; }
+.os-nav-ios span { font-weight: 600; }
+.os-dark .os-nav-ios { background: rgba(28, 28, 30, 0.82); border-color: rgba(255, 255, 255, 0.1); color: #fff; }
+.os-dark .os-nav-ios button { color: #0a84ff; }
+.os-real .os-nav-ios { padding-top: max(12px, env(safe-area-inset-top)); }
+.os-ios .os-app-scroll { padding-top: 104px; }
+.os-real.os-ios .os-app-scroll { padding-top: calc(max(12px, env(safe-area-inset-top)) + 52px); }
+.os-ios .ap-title { margin-top: 4px; font-size: 32px; font-weight: 700; }
+.os-android .os-appbar-a { background: #fef7ff; }
+.os-dark.os-android .os-appbar-a { background: #141218; }
+
+/* cards: iOS inset grouped / Material surfaces */
+.os-ios .ap-chips span, .os-ios .ap-stats div, .os-ios .ap-timeline > div, .os-ios .ap-file, .os-ios .ap-fields, .os-ios .ap-actions .act, .os-ios .set-group, .os-ios .set-profile, .os-ios .ap-btn.ghost { background: #fff; border-radius: 12px; box-shadow: none; }
+.os-android .ap-chips span, .os-android .ap-stats div, .os-android .ap-timeline > div, .os-android .ap-file, .os-android .ap-fields, .os-android .ap-actions .act, .os-android .set-group, .os-android .set-profile, .os-android .ap-btn.ghost { background: #f3edf7; border-radius: 20px; box-shadow: none; }
+.os-dark.os-ios .ap-chips span, .os-dark.os-ios .ap-stats div, .os-dark.os-ios .ap-timeline > div, .os-dark.os-ios .ap-file, .os-dark.os-ios .ap-fields, .os-dark.os-ios .ap-actions .act, .os-dark.os-ios .set-group, .os-dark.os-ios .set-profile, .os-dark.os-ios .ap-btn.ghost { background: #1c1c1e; }
+.os-dark.os-android .ap-chips span, .os-dark.os-android .ap-stats div, .os-dark.os-android .ap-timeline > div, .os-dark.os-android .ap-file, .os-dark.os-android .ap-fields, .os-dark.os-android .ap-actions .act, .os-dark.os-android .set-group, .os-dark.os-android .set-profile, .os-dark.os-android .ap-btn.ghost { background: #2b2930; }
+
+/* project header becomes a clean card instead of a full-bleed slab */
+.ap-hero, .os-android .ap-hero, .os-real .ap-hero, .os-real.os-android .ap-hero { margin: 8px 16px 0; padding: 16px; border-radius: 22px; }
+.os-ios .ap-hero { border-radius: 18px; }
+.ap-hero h3 { font-size: 24px; }
+.ap-status { top: 14px; right: 14px; }
+.ap-shots { padding-top: 14px; }
+
+/* WhatsApp header sits under the system bar */
+.wa-head, .os-android .wa-head, .os-real .wa-head { margin-top: 0; padding: 10px 14px; }
+.os-ios .ap-wa { margin-top: -6px; }
+
+/* ---------- Live app frame ---------- */
+.ap-tabs { margin: 12px 16px 0; }
+.ap-live { position: relative; margin: 12px 16px 0; height: 560px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.5); }
+.os-real .ap-live { height: calc(100dvh - 300px); min-height: 420px; }
+.ap-live iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.ap-live-load { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 10px; padding: 30px; text-align: center; background: #fff; color: #141414; }
+.ap-live-load small { color: #8a847a; font-size: 13px; line-height: 1.4; }
+.spin { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #e5e0d8; border-top-color: #ff5a1f; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ap-live-open { position: absolute; z-index: 3; right: 10px; bottom: 10px; padding: 7px 12px; border-radius: 999px; background: rgba(20, 20, 20, 0.75); color: #fff; font-size: 12px; font-weight: 600; backdrop-filter: blur(6px); }
+
+/* ---------- Games ---------- */
+.gm-list { display: grid; gap: 10px; padding: 0 16px; }
+.gm-list button { display: flex; align-items: center; gap: 12px; padding: 12px; border: 0; border-radius: 16px; background: #fff; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.os-android .gm-list button { background: #f3edf7; border-radius: 22px; }
+.os-dark .gm-list button { background: #1c1c1e; }
+.gm-list span { display: grid; place-items: center; flex: 0 0 auto; width: 52px; height: 52px; border-radius: 13px; font-size: 24px; color: #fff; }
+.gm-list div { flex: 1; display: grid; }
+.gm-list b { font-size: 16px; }
+.gm-list small { font-size: 12.5px; color: #8a847a; }
+.gm-list em { font-style: normal; padding: 6px 14px; border-radius: 999px; background: #e9e7ff; color: #4f46e5; font-weight: 700; font-size: 13px; }
+.ap-game { padding: 0 16px 20px; }
+.os .gm-back { border: 0; background: none; padding: 4px 0 10px; color: #007aff; font: inherit; font-size: 16px; cursor: pointer; }
+.gm { display: grid; justify-items: center; gap: 12px; }
+.gm-bar { display: flex; justify-content: space-around; width: 100%; padding: 10px; border-radius: 14px; background: #fff; font-size: 13px; color: #8a847a; }
+.gm-bar b { margin-left: 4px; font-size: 17px; color: #141414; }
+.os-dark .gm-bar { background: #1c1c1e; }
+.os-dark .gm-bar b { color: #fff; }
+.gm-board { position: relative; width: 100%; max-width: 320px; aspect-ratio: 1; border-radius: 16px; overflow: hidden; touch-action: none; }
+.gm-board canvas { width: 100%; height: 100%; display: block; }
+.os .gm-overlay { position: absolute; inset: 0; display: grid; place-content: center; gap: 6px; border: 0; background: rgba(10, 20, 12, 0.6); color: #fff; font: inherit; cursor: pointer; }
+.gm-overlay b { font-size: 24px; }
+.gm-overlay span { font-size: 13px; opacity: 0.85; }
+.gm-pad { display: grid; justify-items: center; gap: 6px; }
+.gm-pad div { display: flex; gap: 6px; }
+.gm-pad button { width: 58px; height: 46px; border: 0; border-radius: 12px; background: #e6e3dd; color: #333; font-size: 16px; cursor: pointer; }
+.os-dark .gm-pad button { background: #2c2c30; color: #eee; }
+.gm-pad button:active { transform: scale(0.94); }
+.ttt { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 300px; aspect-ratio: 1; }
+.ttt button { border: 0; border-radius: 16px; background: #fff; font-size: 44px; font-weight: 300; color: #141414; cursor: pointer; transition: transform 0.15s, background 0.3s; }
+.ttt button:active { transform: scale(0.95); }
+.ttt button.X { color: #6c5ce7; }
+.ttt button.O { color: #ff5a1f; }
+.ttt button.win { background: #fff3bf; }
+.os-dark .ttt button { background: #1c1c1e; color: #fff; }
+.gm-msg { margin: 0; font-size: 15px; font-weight: 600; text-align: center; }
+.os .gm-btn { padding: 12px 26px; border: 0; border-radius: 999px; background: #141414; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.os-dark .gm-btn, .os.os-dark .gm-btn { background: #fff; color: #141414; }
+.mem { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; max-width: 320px; perspective: 800px; }
+.card3 { position: relative; aspect-ratio: 3 / 4; padding: 0; border: 0; background: none; cursor: pointer; transform-style: preserve-3d; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.card3.up { transform: rotateY(180deg); }
+.card3 span { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 12px; backface-visibility: hidden; }
+.card3 .back { background: linear-gradient(140deg, #ff7a3d, #c2408f); color: rgba(255, 255, 255, 0.85); font-weight: 800; font-size: 14px; }
+.card3 .front { transform: rotateY(180deg); background: #fff; font-size: 28px; }
+.os-dark .card3 .front { background: #1c1c1e; }
+.card3.done .front { background: #e6fcf5; }
+.os-dark .card3.done .front { background: #12372a; }
+
+/* buttons inside the phone keep their own text colours */
+.os .ap-btn { color: #fff; }
+.os .ap-btn.ghost { color: #141414; }
+.os.os-dark .ap-btn.ghost { color: #f2f2f2; }
+.os .os-search { color: #5f6368; }
+.os.os-dark .os-search { color: #c4c4c8; }
+.os .ap-viewer { color: #fff; }
