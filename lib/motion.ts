@@ -220,7 +220,7 @@ export function startMotion(root: HTMLElement) {
     gsap.from(q(".tl-card", item), { x: right ? 80 : -80, rotationY: right ? -45 : 45, transformPerspective: 900, autoAlpha: 0, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: item, start: "top 80%" } });
     gsap.from(q(".tl-dot", item), { scale: 0, duration: 0.6, ease: "back.out(3)", scrollTrigger: { trigger: item, start: "top 62%" } });
   });
-  gsap.from(".award", { rotationX: 90, transformPerspective: 900, transformOrigin: "50% 100%", autoAlpha: 0, duration: 1.2, ease: "power4.out", stagger: 0.12, scrollTrigger: { trigger: ".awards", start: "top 88%" } });
+  gsap.from(".award", { y: 40, autoAlpha: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, scrollTrigger: { trigger: ".awards", start: "top 88%" } });
 
   /* ---------- Contact ---------- */
   gsap.from(".contact", { borderRadius: "50% 50% 0 0", ease: "none", scrollTrigger: { trigger: ".contact", start: "top bottom", end: "top 30%", scrub: true } });
