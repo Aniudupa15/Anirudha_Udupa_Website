@@ -1,0 +1,148 @@
+/* ---------- Real logos and brand icons ---------- */
+.os-tile { overflow: hidden; }
+.os-logo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ap-icon .os-tile { width: 58px; height: 58px; box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.4); }
+.ap-icon { background: none !important; }
+
+/* ---------- Contact card and quick actions ---------- */
+.ap-card { display: grid; justify-items: center; padding: 14px 20px 6px; text-align: center; }
+.ap-card img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
+.ap-card h3 { margin: 12px 0 2px; font-size: 26px; letter-spacing: -0.03em; }
+.ap-card p { margin: 0; color: #8a847a; font-size: 14px; }
+.ap-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 16px 16px 6px; }
+.ap-actions .act { display: grid; justify-items: center; gap: 4px; padding: 10px 4px; border-radius: 16px; background: #fff; font-size: 12px; font-weight: 600; color: #1f6fe0; }
+.ap-actions .act span { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; }
+.ap-actions .act span svg { width: 20px; height: 20px; }
+.act.call span { background: #22b24c; }
+.act.wa span { background: #25d366; }
+.act.mail span { background: #1f6fe0; }
+.act.li span { background: #0a66c2; }
+.ap-fields { margin: 10px 16px; border-radius: 16px; background: #fff; overflow: hidden; }
+.ap-fields a { display: grid; padding: 11px 16px; border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+.ap-fields a:last-child { border-bottom: 0; }
+.ap-fields span { font-size: 12.5px; color: #8a847a; }
+.ap-fields b { font-size: 15px; font-weight: 500; color: #1f6fe0; overflow-wrap: anywhere; }
+
+/* phone dialer buttons */
+.ap-dial-btns { display: flex; gap: 40px; margin-top: 20px; }
+.ap-round { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; }
+.ap-round.call { background: #22b24c; box-shadow: 0 10px 20px -8px rgba(34, 178, 76, 0.7); }
+.ap-round.wa { background: #25d366; box-shadow: 0 10px 20px -8px rgba(37, 211, 102, 0.7); }
+
+/* WhatsApp chat */
+.ap-wa { position: relative; min-height: 100%; padding-bottom: 80px; background: #efe7dd; }
+.wa-head { display: flex; align-items: center; gap: 10px; margin-top: -54px; padding: 60px 16px 12px; background: #075e54; color: #fff; }
+.os-real .wa-head { margin-top: 0; padding-top: 14px; }
+.wa-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
+.wa-head div { display: grid; flex: 1; }
+.wa-head b { font-size: 16px; }
+.wa-head span { font-size: 12px; opacity: 0.85; }
+.wa-chat { display: grid; gap: 6px; padding: 14px 12px; background: radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.03) 1px, transparent 1px) 0 0 / 14px 14px; }
+.wa-day { justify-self: center; padding: 4px 10px; border-radius: 8px; background: #e1f2fb; font-size: 12px; color: #4b5563; }
+.wa-chat p { position: relative; justify-self: start; margin: 0; max-width: 82%; padding: 8px 12px 18px; border-radius: 0 12px 12px 12px; background: #fff; font-size: 14.5px; line-height: 1.4; color: #111; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); }
+.wa-chat small { position: absolute; right: 10px; bottom: 4px; font-size: 10.5px; color: #8a8f98; }
+.wa-input { position: sticky; bottom: 0; display: flex; gap: 8px; padding: 10px 10px 12px; }
+.wa-input input { flex: 1; min-width: 0; padding: 12px 16px; border: 0; border-radius: 999px; background: #fff; font: inherit; font-size: 14.5px; color: #111; outline: none; }
+.wa-input a { display: grid; place-items: center; flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: #00a884; }
+
+/* Settings */
+.ap-settings { padding-bottom: 30px; }
+.set-profile { display: flex; align-items: center; gap: 12px; margin: 10px 16px 0; padding: 14px; border-radius: 16px; background: #fff; }
+.set-profile img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
+.set-profile b { display: block; font-size: 17px; }
+.set-profile span { font-size: 13px; color: #8a847a; }
+.set-label { margin: 22px 30px 6px; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #8a847a; }
+.set-group { margin: 0 16px; padding: 12px; border-radius: 16px; background: #fff; }
+.set-note { margin: 10px 4px 0; font-size: 12.5px; color: #8a847a; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; padding: 3px; border-radius: 12px; background: #eceae6; }
+.seg button { padding: 10px; border: 0; border-radius: 10px; background: transparent; font-size: 14.5px; font-weight: 600; color: #4b4740; cursor: pointer; transition: background 0.25s, color 0.25s, box-shadow 0.25s; }
+.seg button.on { background: #fff; color: #141414; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
+.set-group.rows { padding: 0 14px; }
+.set-group.rows div { display: flex; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.06); font-size: 14.5px; }
+.set-group.rows div:last-child { border-bottom: 0; }
+.set-group.rows span { color: #4b4740; }
+.set-group.rows b { font-weight: 500; color: #8a847a; }
+.set-group.rows b.ok { color: #16a34a; }
+
+/* =========================================================
+   Android style
+   ========================================================= */
+.os-android { font-family: "Google Sans", Roboto, var(--font-sans), system-ui, sans-serif; }
+.os-android .os-wall { background:
+    radial-gradient(70% 50% at 80% 10%, #a5b4fc 0%, transparent 70%),
+    radial-gradient(70% 60% at 10% 90%, #f9a8d4 0%, transparent 70%),
+    linear-gradient(170deg, #c7d2fe, #818cf8 45%, #4338ca); }
+.os-android .os-statusbar { padding: 0 22px; font-size: 14px; font-weight: 500; height: 40px; }
+.os-android .os-punch { position: absolute; left: 50%; top: 11px; translate: -50% 0; width: 18px; height: 18px; border-radius: 50%; background: #000; }
+.os-android .pct { font-size: 12.5px; font-weight: 500; }
+.os-android .os-lock { align-items: flex-start; padding: 70px 26px 40px; text-align: left; background: rgba(30, 20, 80, 0.12); }
+.os-android .os-lock-in { display: grid; justify-items: start; width: 100%; }
+.os-lock-in { display: grid; justify-items: center; width: 100%; }
+.os-lock-clock-a { display: grid; font-size: 120px; font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
+.os-lock-clock-a b:last-child { color: #e0e7ff; }
+.os-android .os-lock-date { margin-top: 14px; font-size: 16px; font-weight: 500; }
+.os-android .os-notif { border-radius: 26px; background: rgba(255, 255, 255, 0.9); color: #1f1f1f; }
+.os-android .os-notif small { font-weight: 400; color: #6b7280; }
+.os-android .os-unlock { align-self: center; }
+.os-android .os-home { padding-top: 52px; }
+.os-android .os-glance { display: grid; gap: 2px; padding: 10px 6px; background: none; box-shadow: none; backdrop-filter: none; }
+.os-android .os-glance b { font-size: 22px; font-weight: 500; }
+.os-android .os-glance span { color: #dcfce7; font-weight: 500; font-size: 14px; }
+.os-android .os-glance em { font-size: 13px; opacity: 0.9; }
+.os-android .os-tile { border-radius: 50%; box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35); }
+.os-android .os-tile .os-logo { border-radius: 50%; }
+.os-android .os-icon small { font-weight: 500; font-size: 12px; }
+.os-android .os-grid { margin-top: 14px; gap: 16px 8px; }
+.os-search { position: absolute; left: 18px; right: 18px; bottom: 130px; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 0; border-radius: 999px; background: #fff; color: #5f6368; font-size: 15px; text-align: left; cursor: pointer; box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.4); }
+.os-search span:nth-child(2) { flex: 1; }
+.os-search .g { font-weight: 800; font-size: 18px; background: conic-gradient(#4285f4 0 25%, #34a853 0 50%, #fbbc05 0 75%, #ea4335 0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.os-android .os-dock { bottom: 56px; background: none; backdrop-filter: none; padding: 0 10px; }
+.os-navbar { position: absolute; z-index: 40; left: 0; right: 0; bottom: 0; height: 46px; display: flex; justify-content: space-around; align-items: center; padding: 0 40px; }
+.os-navbar button { width: 56px; height: 40px; border: 0; background: none; color: #fff; font-size: 20px; cursor: pointer; border-radius: 20px; }
+.os-navbar button:active { background: rgba(255, 255, 255, 0.2); }
+.os-android:has(.os-app) .os-navbar { background: #f7f4ef; }
+.os-android:has(.os-app) .os-navbar button { color: #3c4043; }
+.os-appbar-a { position: absolute; z-index: 3; left: 0; right: 0; top: 0; display: flex; align-items: center; gap: 12px; padding: 40px 12px 8px; background: inherit; font-size: 20px; font-weight: 500; }
+.os-appbar-a button { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+.os-android .os-app-scroll { padding-top: 90px; padding-bottom: 56px; }
+.os-android .ap-hero { margin-top: -90px; padding-top: 100px; }
+.os-android .wa-head { margin-top: -90px; padding-top: 96px; }
+.os-android .ap-title { display: none; }
+.os-android .ap-btn, .os-android .ap-actions .act, .os-android .set-group, .os-android .ap-fields { border-radius: 22px; }
+.os-real.os-android .os-statusbar { display: none; }
+.os-real.os-android .os-appbar-a { padding-top: max(10px, env(safe-area-inset-top)); }
+.os-real.os-android .os-app-scroll { padding-top: 62px; }
+.os-real.os-android .ap-hero { margin-top: -62px; padding-top: 72px; }
+.os-real.os-android .os-navbar { bottom: env(safe-area-inset-bottom); }
+
+/* =========================================================
+   Dark theme
+   ========================================================= */
+.os-dark .os-wall { filter: brightness(0.5) saturate(1.1); }
+.os-dark .os-app { background: #111114; color: #f2f2f2; }
+.os-dark .os-appbar-a { background: #111114; color: #f2f2f2; }
+.os-dark .ap-text, .os-dark .ap-timeline p, .os-dark .ap-browser p { color: #c4c4c8; }
+.os-dark .ap-sub, .os-dark .ap h4, .os-dark .ap-profile p, .os-dark .ap-card p, .os-dark .set-label, .os-dark .set-note, .os-dark .ap-stats span, .os-dark .ap-fields span, .os-dark .set-profile span, .os-dark .ap-timeline em, .os-dark .ap-file span, .os-dark .ap-dial > p { color: #8e8e93; }
+.os-dark .ap-chips span, .os-dark .ap-stats div, .os-dark .ap-timeline > div, .os-dark .ap-file, .os-dark .ap-fields, .os-dark .ap-actions .act, .os-dark .set-group, .os-dark .set-profile, .os-dark .ap-btn.ghost { background: #1c1c1f; color: #f2f2f2; }
+.os-dark .ap-fields a, .os-dark .set-group.rows div { border-color: rgba(255, 255, 255, 0.08); }
+.os-dark .set-group.rows span { color: #d1d1d6; }
+.os-dark .seg { background: #2c2c30; }
+.os-dark .seg button { color: #c4c4c8; }
+.os-dark .seg button.on { background: #48484d; color: #fff; }
+.os-dark .ap-keys span { background: #2c2c30; color: #fff; }
+.os-dark .ap-mail label { border-color: #2c2c30; }
+.os-dark .ap-mail input, .os-dark .ap-mail textarea { color: #f2f2f2; }
+.os-dark .ap-url { background: #2c2c30; color: #c4c4c8; }
+.os-dark .ap-timeline i { box-shadow: 0 0 0 4px #111114; }
+.os-dark .ap-wa { background: #0b141a; }
+.os-dark .wa-head { background: #1f2c34; }
+.os-dark .wa-chat p { background: #1f2c34; color: #e9edef; }
+.os-dark .wa-day { background: #182229; color: #8696a0; }
+.os-dark .wa-input input { background: #1f2c34; color: #e9edef; }
+.os-dark .os-notif { background: rgba(40, 40, 50, 0.6); color: #fff; }
+.os-dark.os-android .os-notif { background: rgba(30, 30, 40, 0.85); color: #fff; }
+.os-dark .os-search { background: #2c2c30; color: #c4c4c8; }
+.os-dark:has(.os-app) .os-homebar span { background: rgba(255, 255, 255, 0.7); }
+.os-dark:has(.os-app) .os-statusbar { color: #fff; }
+.os-dark.os-android:has(.os-app) .os-navbar { background: #111114; }
+.os-dark.os-android:has(.os-app) .os-navbar button { color: #e5e5ea; }
