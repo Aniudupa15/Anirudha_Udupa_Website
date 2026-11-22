@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { awards, contact, experience, moreWork, skills, work } from "@/lib/content";
+import { contact, experience, moreWork, skills, work } from "@/lib/content";
 
 export function Loader() {
   return (
@@ -391,15 +391,6 @@ export function Journey() {
                 <p className="tl-org">{e.org}</p>
                 <p>{e.note}</p>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className="awards">
-          {awards.map((a, i) => (
-            <div className={"award a" + i} key={a.title}>
-              <b>{a.big}</b>
-              <span>{a.of}</span>
-              <p>{a.title}</p>
             </div>
           ))}
         </div>
