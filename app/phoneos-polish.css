@@ -124,3 +124,17 @@
 .os .os-search { color: #5f6368; }
 .os.os-dark .os-search { color: #c4c4c8; }
 .os .ap-viewer { color: #fff; }
+
+/* ---------- Home screen pages (swipe between them) ---------- */
+.os-pages { display: flex; margin: 0 -22px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x; cursor: grab; }
+.os-pages::-webkit-scrollbar { display: none; }
+.os-pages.dragging { scroll-snap-type: none; cursor: grabbing; }
+.os-page { flex: 0 0 100%; padding: 0 22px 8px; scroll-snap-align: start; scroll-snap-stop: always; }
+.os .os-dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.45); cursor: pointer; transition: background 0.25s, transform 0.25s; }
+.os .os-dots button.on { background: #fff; transform: scale(1.15); }
+.os-android .os-dots { bottom: 196px; }
+.os-real.os-android .os-dots { bottom: calc(196px + env(safe-area-inset-bottom)); }
+
+/* game icons */
+.os-emoji { font-size: 30px; line-height: 1; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25)); }
+.os-emoji.os-x { font-size: 17px; font-weight: 800; letter-spacing: 1px; color: #fff; }

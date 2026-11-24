@@ -11,7 +11,7 @@ type Theme = "light" | "dark";
 /* ---------- App catalogue ---------- */
 type AppId =
   | "rentease" | "moneyplan" | "punchin" | "cleankudla" | "judica" | "trackin" | "swachsetu"
-  | "photos" | "about" | "contact" | "skills" | "journey" | "awards" | "resume" | "linkedin" | "github" | "settings" | "games"
+  | "photos" | "about" | "contact" | "skills" | "journey" | "awards" | "resume" | "linkedin" | "github" | "settings" | "snake" | "ttt" | "memory"
   | "phone" | "whatsapp" | "mail" | "browser";
 
 type App = { id: AppId; name: string; bg: string; icon: React.ReactNode; external?: string };
@@ -79,14 +79,9 @@ const apps: App[] = [
   { id: "resume", name: "Resume", bg: "linear-gradient(140deg,#ff6b6b,#c92a2a)", icon: I.doc },
   { id: "linkedin", name: "LinkedIn", bg: "#0a66c2", icon: I.linkedin, external: contact.linkedin },
   { id: "github", name: "GitHub", bg: "#1b1f24", icon: I.github, external: contact.github },
-  { id: "games", name: "Games", bg: "rgba(255,255,255,0.28)", icon: (
-    <span className="os-folder">
-      <i style={{ background: "#2ea043" }}>🐍</i>
-      <i style={{ background: "#6c5ce7" }}>✕</i>
-      <i style={{ background: "#ff6fa5" }}>🃏</i>
-      <i style={{ background: "transparent" }} />
-    </span>
-  ) },
+  { id: "snake", name: "Snake", bg: "linear-gradient(140deg,#56d364,#1a7f37)", icon: <span className="os-emoji">🐍</span> },
+  { id: "ttt", name: "Tic-Tac-Toe", bg: "linear-gradient(140deg,#a29bfe,#5b4bd6)", icon: <span className="os-emoji os-x">✕◯</span> },
+  { id: "memory", name: "Memory", bg: "linear-gradient(140deg,#ff9cc4,#e0457f)", icon: <span className="os-emoji">🃏</span> },
   { id: "settings", name: "Settings", bg: "linear-gradient(140deg,#aeb4bc,#6b7280)", icon: I.settings },
 ];
 const dock: App[] = [
@@ -96,6 +91,9 @@ const dock: App[] = [
   { id: "browser", name: "Website", bg: "#ffffff", icon: I.globe },
 ];
 const allApps = [...apps, ...dock];
+/* home screen pages: 12 icons each, swipe between them */
+const PER_PAGE = 12;
+const pages = Array.from({ length: Math.ceil(apps.length / PER_PAGE) }, (_, i) => apps.slice(i * PER_PAGE, (i + 1) * PER_PAGE));
 
 const projectOf = (id: AppId) => {
   const map: Partial<Record<AppId, string>> = { rentease: "RentEase", moneyplan: "Money Plan", punchin: "PunchIn" };
@@ -132,7 +130,6 @@ function AppBody({ id, onExit, platform, theme, setPlatform, setTheme }: { id: A
   const [waText, setWaText] = useState("Hi Anirudha, I saw your portfolio and would like to talk.");
   const [tab, setTab] = useState<"live" | "info">(LIVE[id] ? "live" : "info");
   const [loaded, setLoaded] = useState(false);
-  const [game, setGame] = useState<"snake" | "ttt" | "memory" | null>(null);
   const p = projectOf(id);
   const app = allApps.find((a) => a.id === id)!;
 
@@ -432,39 +429,14 @@ function AppBody({ id, onExit, platform, theme, setPlatform, setTheme }: { id: A
           </a>
         </div>
       );
-    case "games":
-      if (game) {
-        return (
-          <div className="ap ap-game">
-            <button type="button" className="gm-back" onClick={() => setGame(null)}>
-              ‹ Games
-            </button>
-            {game === "snake" && <Snake />}
-            {game === "ttt" && <TicTacToe />}
-            {game === "memory" && <Memory />}
-          </div>
-        );
-      }
+    case "snake":
+    case "ttt":
+    case "memory":
       return (
-        <div className="ap">
-          <h3 className="ap-title">Games</h3>
-          <p className="ap-sub">A few small games I built for this phone.</p>
-          <div className="gm-list">
-            {[
-              { k: "snake" as const, t: "Snake", d: "Eat, grow, don't bite yourself.", c: "#2ea043", e: "🐍" },
-              { k: "ttt" as const, t: "Tic-Tac-Toe", d: "Beat the phone. It's good, not perfect.", c: "#6c5ce7", e: "✕" },
-              { k: "memory" as const, t: "Memory", d: "Match 8 pairs in as few moves as you can.", c: "#ff6fa5", e: "🃏" },
-            ].map((g) => (
-              <button key={g.k} type="button" onClick={() => setGame(g.k)}>
-                <span style={{ background: g.c }}>{g.e}</span>
-                <div>
-                  <b>{g.t}</b>
-                  <small>{g.d}</small>
-                </div>
-                <em>Play</em>
-              </button>
-            ))}
-          </div>
+        <div className="ap ap-game">
+          {id === "snake" && <Snake />}
+          {id === "ttt" && <TicTacToe />}
+          {id === "memory" && <Memory />}
         </div>
       );
     case "settings":
@@ -536,6 +508,20 @@ export default function PhoneOS({ active, onExit, full = false }: { active: bool
   const [theme, setThemeState] = useState<Theme>("light");
   const origin = useRef({ x: 195, y: 420 });
   const swipeY = useRef<number | null>(null);
+  const pager = useRef<HTMLDivElement>(null);
+  const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null);
+  const [page, setPage] = useState(0);
+  /* mouse drag between home pages (touch uses native scroll snapping) */
+  const endDrag = (el: HTMLDivElement, x: number) => {
+    const d = drag.current;
+    el.classList.remove("dragging");
+    if (!d?.moved) { drag.current = null; return; }
+    const dx = x - d.x;
+    const from = Math.round(d.left / el.clientWidth);
+    goPage(Math.max(0, Math.min(pages.length - 1, from + (dx < -40 ? 1 : dx > 40 ? -1 : 0))));
+    window.setTimeout(() => { drag.current = null; }, 0);
+  };
+  const goPage = (i: number) => { const el = pager.current; if (el) el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" }); };
 
   /* remember the visitor's choice of style and theme */
   useEffect(() => {
@@ -688,12 +674,41 @@ export default function PhoneOS({ active, onExit, full = false }: { active: bool
             </div>
           </div>
         )}
-        <div className="os-grid">
-          {apps.map((a) => (
-            <button key={a.id} type="button" className="os-icon" onClick={(e) => launch(a, e.currentTarget)}>
-              <Tile app={a} />
-              <small>{a.name}</small>
-            </button>
+        <div
+          className="os-pages"
+          ref={pager}
+          onScroll={(e) => setPage(Math.round(e.currentTarget.scrollLeft / e.currentTarget.clientWidth))}
+          onPointerDown={(e) => {
+            if (e.pointerType !== "mouse") return;
+            drag.current = { x: e.clientX, left: e.currentTarget.scrollLeft, moved: false };
+          }}
+          onPointerMove={(e) => {
+            const d = drag.current;
+            if (!d) return;
+            const dx = e.clientX - d.x;
+            if (!d.moved && Math.abs(dx) > 6) { d.moved = true; e.currentTarget.classList.add("dragging"); }
+            if (d.moved) e.currentTarget.scrollLeft = d.left - dx;
+          }}
+          onPointerUp={(e) => endDrag(e.currentTarget, e.clientX)}
+          onPointerLeave={(e) => endDrag(e.currentTarget, e.clientX)}
+          onClickCapture={(e) => { if (drag.current?.moved) { e.stopPropagation(); e.preventDefault(); } }}
+        >
+          {pages.map((list, pi) => (
+            <div className="os-page" key={pi} aria-label={`Home page ${pi + 1} of ${pages.length}`}>
+              <div className="os-grid">
+                {list.map((a) => (
+                  <button key={a.id} type="button" className="os-icon" onClick={(e) => launch(a, e.currentTarget)}>
+                    <Tile app={a} />
+                    <small>{a.name}</small>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="os-dots">
+          {pages.map((_, i) => (
+            <button key={i} type="button" className={i === page ? "on" : ""} onClick={() => goPage(i)} aria-label={`Go to home page ${i + 1}`} />
           ))}
         </div>
         {android && (
@@ -702,12 +717,6 @@ export default function PhoneOS({ active, onExit, full = false }: { active: bool
             <span>Search my work</span>
             <span className="mic">🎙</span>
           </button>
-        )}
-        {!android && (
-          <div className="os-dots" aria-hidden="true">
-            <i className="on" />
-            <i />
-          </div>
         )}
         <div className="os-dock">
           {dock.map((a) => (
